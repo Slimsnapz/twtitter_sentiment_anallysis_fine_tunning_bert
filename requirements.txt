@@ -1,0 +1,9 @@
+transformers>=4.30.0
+datasets>=2.11.0
+torch
+accelerate
+scikit-learn
+streamlit
+pandas
+numpy
+gdown
