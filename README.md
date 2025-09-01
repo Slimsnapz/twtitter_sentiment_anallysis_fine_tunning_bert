@@ -40,7 +40,7 @@ tokenizer = AutoTokenizer.from_pretrained("models/exp1")
 
 ---
 
-## File structure (what's included in the repo)
+## File structure
 ```
 / (root)
 ├─ notebooks/
