@@ -55,7 +55,11 @@ tokenizer = AutoTokenizer.from_pretrained("models/exp1")
 │  └─ download_model.py # helper to fetch model from Google Drive (optional)
 ├─ models/              # NOT committed (large files) — include models/README.md (tracked)
 │  └─ README.md         # instructions for downloading trained weights (tracked)
+├─ screenshots/         # training curves, confusion matrices, demo screenshots
 ├─ requirements.txt
 ├─ .gitignore
-├─ README.md            # (this file)
-└─ LICENSE
+├─ DATA_DICTIONARY.md   # (generated)
+├─ QUANTIZATION_INSTRUCTIONS.md  # (generated)
+├─ quantize.py          # (generated)
+├─ Dockerfile           # (generated)
+└─ README.md            # project README (recruiter-facing)
