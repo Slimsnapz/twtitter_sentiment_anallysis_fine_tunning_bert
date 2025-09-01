@@ -1,4 +1,4 @@
-# BERT Fine-Tuning — Sentiment Analysis (Portfolio Project)
+# BERT Fine-Tuning - Sentiment Analysis (Portfolio Project)
 
 ![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/d24bc8cfe537ec6b2abfd80eb12edba562b79cc0/screenshots/Screenshot%202025-09-01%20153835.png)  
 *Model Training Loss* <br>
@@ -6,11 +6,10 @@
 
 
 ## Project summary (business problem & solution)
-**Business problem:** Companies receive large volumes of user-generated text (reviews, support tickets, social media mentions) and need to understand customer sentiment at scale. Manual review is slow, inconsistent, and expensive — making it hard to act quickly on negative feedback or identify product improvements.
+**Business problem:** Companies receive large volumes of user-generated text (reviews, support tickets, social media mentions) and need to understand customer sentiment at scale. Manual review is slow, inconsistent, and expensive - making it hard to act quickly on negative feedback or identify product improvements.
 
-**Solution (this project):** I built an end-to-end sentiment analysis pipeline that fine-tunes a pretrained **BERT** model to classify short text (e.g., tweets or reviews) by sentiment. The solution automates sentiment tagging, enabling teams to prioritize negative feedback, monitor trends, and feed insights into dashboards or ticketing workflows. The project includes training, evaluation, inference scripts, and a Streamlit demo for stakeholder validation.
+**Solution:** I built an end-to-end sentiment analysis pipeline that fine-tunes a pretrained **BERT** model to classify short text (e.g., tweets or reviews) by sentiment. The solution automates sentiment tagging, enabling teams to prioritize negative feedback, monitor trends, and feed insights into dashboards or ticketing workflows. The project includes training, evaluation, inference scripts, and a Streamlit demo for stakeholder validation.
 
----
 
 ## What I built (technical summary)
 - **Model:** Fine-tuned `bert-base-uncased` for sentiment classification using Hugging Face `transformers` and `Trainer`.
@@ -23,17 +22,15 @@
   - Streamlit demo for non-technical stakeholders (`src/app.py`)
 - **Typical training config used in experiments:** batch_size=16, epochs=3, lr=2e-5, max_length=128.
 
----
 
 ## Business impact
 - Automates sentiment labeling across large volumes of text, reducing manual review costs.
 - Enables faster detection of negative sentiment spikes and supports proactive customer engagement.
 - Provides a deployable inference interface (Streamlit) for product managers and non-technical stakeholders to validate model performance before production rollout.
 
----
 
 ## Where the trained model lives
-The trained model is **not** tracked in this repository due to size. Host weights on Google Drive or Hugging Face and provide download instructions in `models/README.md`. After downloading and placing the model at `models/exp1/`, load it like this:
+The trained model is **not** tracked in this repository due to size. Host weights on Google Drive or Hugging Face and provide download instructions in `models/download_model_README.md`. After downloading and placing the model at `models/exp1/`, load it like this:
 
 ```python
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
