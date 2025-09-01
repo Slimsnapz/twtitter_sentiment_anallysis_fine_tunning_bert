@@ -1,9 +1,9 @@
 # BERT Fine-Tuning — Sentiment Analysis (Portfolio Project)
 
 ![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/d24bc8cfe537ec6b2abfd80eb12edba562b79cc0/screenshots/Screenshot%202025-09-01%20153835.png)  
-*Replace with a screenshot of model metrics, confusion matrix, or the Streamlit demo.*
+*Training *
+![Project Screenshot]() 
 
----
 
 ## Project summary (business problem & solution)
 **Business problem:** Companies receive large volumes of user-generated text (reviews, support tickets, social media mentions) and need to understand customer sentiment at scale. Manual review is slow, inconsistent, and expensive — making it hard to act quickly on negative feedback or identify product improvements.
