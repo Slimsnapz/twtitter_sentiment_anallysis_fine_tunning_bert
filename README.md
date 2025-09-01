@@ -1,6 +1,6 @@
 # BERT Fine-Tuning — Sentiment Analysis (Portfolio Project)
 
-![Project Screenshot](path/to/screenshot.png)  
+![Project Screenshot]()  
 *Replace with a screenshot of model metrics, confusion matrix, or the Streamlit demo.*
 
 ---
