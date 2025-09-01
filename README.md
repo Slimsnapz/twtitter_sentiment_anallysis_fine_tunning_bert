@@ -38,7 +38,6 @@ model = AutoModelForSequenceClassification.from_pretrained("models/exp1")
 tokenizer = AutoTokenizer.from_pretrained("models/exp1")
 ```
 
----
 
 ## File structure
 ```
