@@ -1,6 +1,6 @@
 # BERT Fine-Tuning — Sentiment Analysis (Portfolio Project)
 
-![Project Screenshot]()  
+![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/d24bc8cfe537ec6b2abfd80eb12edba562b79cc0/screenshots/Screenshot%202025-09-01%20153835.png)  
 *Replace with a screenshot of model metrics, confusion matrix, or the Streamlit demo.*
 
 ---
