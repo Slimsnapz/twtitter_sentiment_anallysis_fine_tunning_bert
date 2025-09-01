@@ -2,7 +2,7 @@
 
 ![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/d24bc8cfe537ec6b2abfd80eb12edba562b79cc0/screenshots/Screenshot%202025-09-01%20153835.png)  
 *Training *
-![Project Screenshot]() 
+![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/f665b8e1a364862209483e7c4ea9029c0541fc3a/screenshots/Screenshot%202025-09-01%20153353.png) 
 
 
 ## Project summary (business problem & solution)
