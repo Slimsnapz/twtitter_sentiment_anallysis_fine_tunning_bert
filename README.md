@@ -35,7 +35,7 @@
 - **Test accuracy:** `0.XX`  
 - **Weighted F1:** `0.XX`  
 - **Per-class support & F1:**
-![Project Screenshot]() 
+![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/e95191404d951226140203ac1b85722836f0194c/screenshots/Screenshot%202025-09-18%20101610.png) 
 
 ## Where the trained model lives
 The trained model is **not** tracked in this repository due to size. Host weights on Google Drive or Hugging Face and provide download instructions in `models/download_model_README.md`. After downloading and placing the model at `models/exp1/`, load it like this:
