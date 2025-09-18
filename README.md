@@ -29,6 +29,14 @@
 - Provides a deployable inference interface (Streamlit) for product managers and non-technical stakeholders to validate model performance before production rollout.
 
 
+## Evaluation & metrics
+
+- **Validation accuracy:** `0.XX`  
+- **Test accuracy:** `0.XX`  
+- **Weighted F1:** `0.XX`  
+- **Per-class support & F1:**
+![Project Screenshot]() 
+
 ## Where the trained model lives
 The trained model is **not** tracked in this repository due to size. Host weights on Google Drive or Hugging Face and provide download instructions in `models/download_model_README.md`. After downloading and placing the model at `models/exp1/`, load it like this:
 
