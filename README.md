@@ -34,7 +34,7 @@
 - **Validation accuracy:** `0.XX`  
 - **Test accuracy:** `0.XX`  
 - **Weighted F1:** `0.XX`  
-- **Per-class support & F1:**
+- **Per-class support & F1:**<br>
 ![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/e95191404d951226140203ac1b85722836f0194c/screenshots/Screenshot%202025-09-18%20101610.png) 
 
 ## Where the trained model lives
