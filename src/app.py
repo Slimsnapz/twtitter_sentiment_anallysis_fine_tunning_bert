@@ -1,51 +1,119 @@
-"""
-src/app.py
-Streamlit app to demo the sentiment classification model.
-Run with:
-streamlit run src/app.py -- --model_dir models/exp1
-"""
+%%writefile app.py
 import streamlit as st
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-import torch
-import numpy as np
+from transformers import pipeline
+
+st.set_page_config(
+    page_title="BERT Sentiment App",
+    page_icon="📝",
+    layout="centered",
+)
 
 @st.cache_resource
-def load_model(model_dir):
-    tokenizer = AutoTokenizer.from_pretrained(model_dir)
-    model = AutoModelForSequenceClassification.from_pretrained(model_dir)
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    model.to(device)
-    return tokenizer, model, device
+def load_model():
+    """Loads the sentiment analysis model and caches it."""
+    # Keep your local model path inside the function (hidden from UI).
+    return pipeline(
+        "text-classification",
+        model=r"C:\Users\001\Documents\workbench\bert-base-uncased-sentiment-model",
+    )
 
-def predict(text, tokenizer, model, device, top_k=3):
-    inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True)
-    inputs = {k:v.to(device) for k,v in inputs.items()}
-    model.eval()
-    with torch.no_grad():
-        outputs = model(**inputs)
-    probs = torch.softmax(outputs.logits, dim=1).cpu().numpy()[0]
-    topk = np.argsort(-probs)[:top_k]
-    id2label = model.config.id2label if hasattr(model.config, "id2label") else {i:str(i) for i in range(len(probs))}
-    return [(id2label.get(int(i), str(i)), float(probs[int(i)])) for i in topk]
+# --- Styles (small, safe CSS) ---
+st.markdown(
+    """
+    <style>
+    .app-header {text-align:center; margin-bottom: 0.5rem;}
+    .app-sub {text-align:center; color: #6b7280; margin-top: -6px; margin-bottom: 1.4rem;}
+    .result-box {padding: 10px; border-radius: 10px; box-shadow: 0 6px 18px rgba(15,23,42,0.06); background: white;}
+    .stButton>button { border-radius: 8px; padding: 8px 14px; }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
-st.title("BERT Sentiment Classification Demo")
-st.write("Enter text and the fine-tuned BERT model will return sentiment predictions.")
+# Header
+st.markdown("<div class='app-header'><h1 style='margin:0;'>📝 Fine-Tuning BERT — Sentiment Analysis</h1></div>", unsafe_allow_html=True)
+st.markdown("<div class='app-sub'>Type a sentence and click <em>Predict</em>. Shows label + confidence score.</div>", unsafe_allow_html=True)
 
-model_dir = st.sidebar.text_input("Model directory", value="models/exp1")
-if st.sidebar.button("Load model"):
-    with st.spinner("Loading model..."):
-        tokenizer, model, device = load_model(model_dir)
-    st.success("Model loaded.")
+# Sidebar for instructions / quick info (model path removed)
+with st.sidebar:
+    st.header("Quick help")
+    st.write(
+        """
+        - Enter the text you want classified.
+        - Click **Predict** to run the model.
+        - The model is loaded from your local path and cached (hidden here).
+        """
+    )
+    st.divider()
+    st.write("Note: model path is intentionally hidden from the UI.")
 
-text = st.text_area("Input text", value="I love this product!")
-if st.button("Predict"):
-    try:
-        tokenizer, model, device
-    except NameError:
-        with st.spinner("Loading model..."):
-            tokenizer, model, device = load_model(model_dir)
-    with st.spinner("Predicting..."):
-        preds = predict(text, tokenizer, model, device, top_k=3)
-    st.write("Top predictions:")
-    for label, prob in preds:
-        st.write(f"- {label}: {prob:.4f}")
+# Load model (cached)
+classifier = load_model()
+
+# Layout: input and controls
+col1, col2 = st.columns([3, 1])
+with col1:
+    text = st.text_area("Enter text to analyze", height=140, placeholder="Type something like: 'I love this product!'")
+    predict = st.button("Predict")
+
+with col2:
+    st.write("")  # spacer
+    st.write("")  # spacer
+    st.info("Tip:\nShort, clear sentences give more confident scores.")
+
+# Helper: map label to color and friendly name
+def label_to_color_and_name(label: str):
+    label_u = (label or "").upper()
+    # Colors: positive (green), negative (red), neutral (gray), mixed (orange), other (blue)
+    if "POS" in label_u or "GOOD" in label_u or "P" == label_u:
+        return "#16a34a", label  # green
+    if "NEG" in label_u or "BAD" in label_u or "N" == label_u:
+        return "#dc2626", label  # red
+    if "NEU" in label_u or "NEUTRAL" in label_u:
+        return "#6b7280", label  # gray
+    if "MIX" in label_u or "MIXED" in label_u or "CONFLICT" in label_u:
+        return "#f97316", label  # orange
+    # fallback
+    return "#2563eb", label  # blue
+
+# Prediction logic (safe and clear)
+if predict:
+    if not text or text.strip() == "":
+        st.warning("Please enter some text to analyze.")
+    else:
+        with st.spinner("Analyzing..."):
+            raw = classifier(text)
+            prediction = raw[0] if isinstance(raw, (list, tuple)) else raw
+            label = prediction.get("label", "N/A")
+            score = float(prediction.get("score", 0.0))
+
+        color, friendly_label = label_to_color_and_name(label)
+
+        # Result display
+        st.markdown("<div class='result-box'>", unsafe_allow_html=True)
+
+        # Badge with dynamic color (inline style)
+        badge_html = (
+            f"<div style='display:flex;align-items:center;gap:12px;'>"
+            f"<span style='background:{color}; color: white; padding:8px 12px; border-radius:10px; font-weight:700;'>{friendly_label}</span>"
+            f"<div style='font-weight:600'>{score:.2%} confidence</div>"
+            f"</div>"
+        )
+        st.markdown(badge_html, unsafe_allow_html=True)
+
+        # Progress bar (safe: integer 0..100)
+        try:
+            pct = int(max(0, min(100, round(score * 100))))
+            st.progress(pct)
+        except Exception:
+            # fallback if something goes odd
+            try:
+                st.progress(score)
+            except Exception:
+                pass
+
+        # Expand for detailed output
+        with st.expander("Show raw prediction"):
+            st.json(prediction)
+
+        st.markdown("</div>", unsafe_allow_html=True)
