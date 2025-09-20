@@ -1,6 +1,6 @@
 # BERT Fine-Tuning - Sentiment Analysis (Portfolio Project)
 
-![Project Screenshot]
+![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/0972318ce146943a0681e397f0265abf3503731f/screenshots/Screenshot%202025-09-20%20071828.png) 
 
 *Model Training Loss* <br>
 ![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/f665b8e1a364862209483e7c4ea9029c0541fc3a/screenshots/Screenshot%202025-09-01%20153353.png) 
