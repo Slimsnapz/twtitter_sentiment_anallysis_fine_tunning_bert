@@ -1,12 +1,10 @@
 # BERT Fine-Tuning - Sentiment Analysis (Portfolio Project)
-
+### Model screenshot
 ![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/0972318ce146943a0681e397f0265abf3503731f/screenshots/Screenshot%202025-09-20%20071828.png) 
 <br>
 ![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/0972318ce146943a0681e397f0265abf3503731f/screenshots/Screenshot%202025-09-20%20071957.png)
 <br>
 ![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/0972318ce146943a0681e397f0265abf3503731f/screenshots/Screenshot%202025-09-20%20072015.png) 
-*Model Training Loss* <br>
-![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/f665b8e1a364862209483e7c4ea9029c0541fc3a/screenshots/Screenshot%202025-09-01%20153353.png) 
 
 
 ## Project summary (business problem & solution)
@@ -38,6 +36,11 @@
 - **Test accuracy:** `0.90`  
 - **Weighted F1:** `0.90`  
 - **Per-class support & F1:**<br>
+
+### Model Training Loss
+![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/f665b8e1a364862209483e7c4ea9029c0541fc3a/screenshots/Screenshot%202025-09-01%20153353.png) 
+
+### Model Confusionn Matrix
 ![Project Screenshot](https://github.com/Slimsnapz/twtitter_sentiment_anallysis_fine_tunning_bert/blob/e95191404d951226140203ac1b85722836f0194c/screenshots/Screenshot%202025-09-18%20101610.png) 
 
 ## Where the trained model lives
